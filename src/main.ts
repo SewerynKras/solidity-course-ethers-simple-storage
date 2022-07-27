@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import { ethers } from "ethers";
+import { BigNumber, ethers } from "ethers";
 import fs from "fs";
 
 if (!process.env.PRIVATE_KEY) {
@@ -20,4 +20,6 @@ const simpleStorageFactory = new ethers.ContractFactory(
   wallet
 );
 const contract = await simpleStorageFactory.deploy({});
-console.log(contract);
+await contract.store(BigNumber.from("1337"));
+const favNum = await contract.retrieve();
+console.log({ raw: favNum, parsed: favNum.toString() });
