@@ -6,7 +6,8 @@
   "author": "Seweryn Kras <sewerynkras@gmail.com>",
   "type": "module",
   "scripts": {
-    "start": "node --loader ts-node/esm src/main.ts"
+    "start": "node --loader ts-node/esm src/main.ts",
+    "compile": "yarn solcjs --bin --abi --inclue_path node_modules --base-path . -o . SimpleStorage.sol"
   },
   "dependencies": {
     "dotenv": "^16.0.1",
